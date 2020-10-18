@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{margin: 0;padding: 0;}
+    .container{
+        float: left;
+        margin: 10px;
+        position: relative;
+        top: 10px; 
+    }
+    .aa{
+        width: 250px;
+        height: 0px;
+        background: rgb(40, 43, 37);
+        position: absolute;
+       bottom: 0px;
+        opacity: 0.9;
+        color: white;
+        transition: 1s;
+    }
+    p{
+        position: absolute;
+        left: 90px;
+        font-size: 800%;
+        opacity: 0;
+    }
+    .container:hover .aa{
+        height: 200px;
+    }
+    .container:hover p{
+       opacity: 1;
+    }
+
+</style>
+<body>
+    <div class="container">
+      <img src="img/pic2.jpg" width="250px" height="200px" alt="Avatar" class="image">
+      <div class="aa"><p>1</p></div>
+    </div>
+      
+    
+    <div class="container">
+        <img src="img/pic2.jpg" width="250px" height="200px" alt="Avatar" class="image">
+        <div class="aa"><p>2</p></div>
+    </div>
+    <div class="container">
+        <img src="img/pic2.jpg" width="250px" height="200px" alt="Avatar" class="image">
+        <div class="aa"><p>3</p></div>
+    </div>
+</body>
+</html>
