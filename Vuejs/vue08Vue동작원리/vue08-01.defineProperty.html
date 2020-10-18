@@ -62,3 +62,27 @@
 </html>
 
 <!-- vue 스크립트 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js"> /* vue 플러그인 임포트 */</script>
+<script>
+    var vm1 = new Vue({
+        el: "#app",
+        data: {
+            msg: "Hello!!!!!!",
+        },
+    });
+
+    var div = document.getElementById("app2");
+
+    var data = {};
+    Object.defineProperty(data, "msg", {
+        get: function () {
+            div.innerHTML;
+        },
+        set: function (value) {
+            div.innerHTML = value;
+        }
+    });
+    debugger;
+    data.msg = "123";
+    data["msg"] = "abc";
+</script>

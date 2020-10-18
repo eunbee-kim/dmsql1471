@@ -70,4 +70,34 @@
 </html>
 
 <!-- vue 스크립트 플러그인 임포트 -->
-
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js"> /* vue 플러그인 임포트 */</script>
+<script>
+
+    new Vue({
+        el: "#app",
+        data: {
+            val: null,
+            i: null,
+            arr: [1, 2, 3, 4, 5],
+        },
+        methods: {
+            change1: function (event) {
+                this.$data.arr[0] = 100;
+                console.log(this.$data.arr);
+                debugger;
+                Vue.set(this.$data.arr, 0, 100);
+                debugger;
+            },
+            change2: function (event) {
+                this.$set(this.$data.arr, 1, 300);
+            },
+            change3: function (event) {
+                this.$data.arr.splice(0, 2, 500);
+            },
+            change4: function (event) {
+                this.$data.arr = [...this.$data.arr, 70];
+            },
+        }
+    });
+
+</script>

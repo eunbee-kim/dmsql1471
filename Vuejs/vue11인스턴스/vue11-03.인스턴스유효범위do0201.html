@@ -49,3 +49,22 @@
 </html>
 
 <!-- vue 스크립트 플러그인 임포트 -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js"> /* vue 플러그인 임포트 */</script>
+<script>
+    var obj = {
+        message="Hello",
+    };
+    
+    new Vue({
+        el: "#app",
+        data:
+            obj,
+
+    });
+    new Vue({
+        el: "#app2",
+        data:
+            obj,
+    });
+
+</script>

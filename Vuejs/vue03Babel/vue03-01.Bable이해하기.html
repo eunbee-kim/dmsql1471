@@ -41,3 +41,25 @@
 
 
 <!-- Babel 사용하기 -->
+<!-- ES5 -->
+<script type="text/javascript">
+    var name = "abc";
+    var age = 10;
+
+    var getMessage = function () {
+        return "Hello, ES5";
+    }
+
+    document.getElementById("output_es5").innerText = getMessage();
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"> /* JSX를 자바스크립트로 변환 */</script>
+<script type="text/bable">
+    const name="abc";
+    let age = 10;
+
+    const getMessage = () => {
+        return "Hello!! ES6"
+    }
+    document.getElementById("output_es6").innerText = getMessage();
+</script>

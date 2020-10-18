@@ -35,3 +35,18 @@
 </html>
 
 <!-- vue 스크립트 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js"> /* vue 플러그인 임포트 */</script>
+<script>
+    new Vue({
+        el: "#my",
+        data: {
+            message: "change message at mounted!!!",
+        },
+        methods: {
+            doClick: function (event) {
+                this.$set(this.$data, "message", "change message when a button clicked!!!")
+            },
+        },
+    });
+
+</script>

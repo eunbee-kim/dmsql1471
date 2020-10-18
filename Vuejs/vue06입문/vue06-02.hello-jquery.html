@@ -15,9 +15,16 @@
 
     <div id="app">
         <!-- 여기에  Hello, jQery!!!! 출력 -->
+        <p></p>
+        <button></button>
     </div>
+    <script src="../jquery-3.4.1.js"></script>
+    <script>
+        $("#app>p").text("Hello");
+        $("#app>button").on("click", function (event) {
+            alert("hi")
+        });
+    </script>
 </body>
 
 </html>
-
-
