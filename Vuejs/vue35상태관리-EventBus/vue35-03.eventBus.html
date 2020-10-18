@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Event Bus Sample</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- CSS import -->
+    <link rel="stylesheet" href="../css/reset.css">
+
+</head>
+<body>
+    <pre>
+
+      Event buses are a useful way of communicating between components which are not directly related,
+      i.e. Have no parent-child relationship.
+      It is just an empty vue instance, which can be used to $emit events or listen $on the said events.
+      Use vuex if your application has a lot of components requiring the data of each other.
+
+      https://riptutorial.com/vue-js/example/29377/eventbus
+      https://jsdev.kr/t/vue-js-event-bus/2926
+    </pre>
+    <hr>
+    <div id="demo">
+        <card></card>
+    </div>
+
+</body>
+</html>

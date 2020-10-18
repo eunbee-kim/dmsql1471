@@ -1,0 +1,57 @@
+
+
+vue code snippets 만들기
+
+https://www.youtube.com/watch?v=t4ESp_po6Wc
+
+
+    "Vue Instance": {
+        "prefix": "vuei",
+        "body": [
+            "new Vue({",
+            "    /* edtmc^2w */",
+            "    el: \"${1:}\",",
+            "    data: {",
+            "        ",
+            "    },",
+            "    //template: ``,",
+            "    methods: {",
+            "        ",
+            "    },",
+            "    //components: { }, ",
+            "    computed: {        ",
+            "        ",
+            "    },                 ",
+            "    watch: {           ",
+            "        ",
+            "    },",
+            "});"
+        ],
+        "description": "Vue Instance"
+    },
+    "Vue Component": {
+        "prefix": "vuec",
+        "body": [
+            "Vue.component(\"${1:${TM_FILENAME_BASE}}\", { ",
+            "    /* pdtmc^2w */",
+            "    props: [] ,",
+            "    data: function() {",
+            "        return { }",
+            "    },",
+            "    template: `",
+            "        ",
+            "    `,",
+            "    methods: {",
+            "        ",
+            "    },",
+            "    //components: { },",
+            "    computed: {",
+            "        ",
+            "    },",
+            "    watch: {",
+            "        ",
+            "    },",
+            "});"
+        ],
+        "description": "Vue Component"
+    }

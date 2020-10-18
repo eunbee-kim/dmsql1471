@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Sample</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- CSS import -->
+    <link rel="stylesheet" href="../css/reset.css">
+</head>
+
+<body>
+
+    <pre>
+
+    Vue 인스턴스 유효범위란? [참조]page 42~44
+    
+    인스턴스가 다른면 데이터를 공유할 수 없다.
+
+    #app 은 vm1 으로 #app2 은 vm2 라는 이름으로 인스턴스를 만드시오
+
+    문제 1.
+        "#app" 의 {{ message }} 에는 "Hello"를 출력
+        "#app2" 의 {{ message }} 에는 "Vue.js"를 출력
+
+    문제 2.인스턴스가 다른 경우 어떻게 데이터를 공유하게 할 수 있나요?
+        reference 타입 변수를 사용하면 가능하다.
+
+    ※ 자바스트립트 자료형
+        value 타입    : String, Boolean, Number, undefined, null
+        reference 타입: Array, Function, Object, ...
+
+    </pre>
+    <hr>
+
+    <div id="app">
+        {{ message }}
+    </div>
+
+    <div id="app2">
+        {{ message }}
+    </div>
+</body>
+
+</html>
+
+<!-- vue 스크립트 플러그인 임포트 -->

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+
+    <link rel="stylesheet" href="../css/reset.css"/>
+
+    <style>
+        .styleCommon {
+            margin: 0px;
+            padding: 0px;
+            font-size : 16px;
+            box-sizing : border-box;
+        }
+        .styleDiv {
+            width: 250px;
+            height: 150px;
+            text-align: center;
+            background-color: black;
+            padding: 40px;
+            font-family: sans-serif;
+            color: #999999;
+            border-radius: 10px;
+            box-sizing : inherit;
+        }
+        .styleInputColor {
+            margin: 10px 0 0 0;
+            padding: 0px;
+            font-size : 16px;
+            box-sizing : border-box;
+            width: 200px;
+        }
+        .styleInputButton {
+            margin: 0 0 0 -6px;
+            padding: 0px;
+            font-size : 16px;
+            box-sizing : border-box;
+            width: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <xmp>
+        리액트를 사용하여 컬러라이저를 만들어 본다.
+
+        목적: 컬러라이저는 흰색의 정사각형을 원하는 컬러로 바꿔주는 컴포넌트이다.
+        텍스트 필드에 원하는 컬러 이름을 입력하고 go 버튼을 클릭하면 입력한 컬러로
+        정사각형의 컬러가 바뀌게 된다.
+
+        기능: 컬러가 바뀐 후에는 기존의 입력 값을 지우고 텍스트 입력 창에 포커스가 가도록 있도록 만드시오
+
+        <form> 태그 내부에 둘러싸여진 input text 박스에서 포커스가 있을 때
+        Enter 를 누르게 되면 자동으로 submit 이 된다. 이것은 form 내부에
+        input 박스가 하나만 존재해서 그렇다. 이 기능을 막고자 한다
+            (1) keycode 값을 판단해서 처리
+            (2) form 태그의 속성값으로 막기
+            (3) 크기가 없는 input 박스 하나더 추가해준다.
+    </xmp>
+    <hr>
+
+    <div id="app">
+        <div class="styleCommon">
+            <div class="styleDiv">
+            </div>
+            <div>
+                <form action="" method="get" onSubmit="setNewColor()">
+                    <input
+                        type="text"
+                        name="color"
+                        class="styleInputColor"
+                        placeholder="Enter a color"
+                    />
+                    <input type="button" value="go" class="styleInputButton" onClick="handlerClick()" />
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Event Bus Sample</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- CSS import -->
+    <link rel="stylesheet" href="../css/reset.css">
+
+    <style>
+        input:focus {
+            background-color: lightskyblue;
+            border: 3px solid #555;
+        }
+        #component-sibilings {
+        }
+        #component-sibilings > * {
+            width: 45%;
+            min-height: calc( 100% );
+            height: auto;
+            display: inline-block;
+        }
+        #component-sibilings > .left {
+            background-color: lightgreen;
+        }
+        #component-sibilings > .right {
+            background-color: lightsalmon;
+        }
+    </style>
+
+</head>
+<body>
+    <xmp>
+        ref 를 이용하는 상태관리 방법을 배운다.
+
+        ref 를 언제 사용하는가?
+        1. 직접 DOM에 접근 할 때
+        2. focus 줄 때
+
+        vue에선 $refs로 접근
+
+        페이지가 로딩되면 myinput1에 포커스 주기
+
+        how to know element is focused or not : document.activeElement
+
+        how to clone a Objects in JavaScript :
+            const food = { beef: '🥩', bacon: '🥓' };
+            const cloneFood1 = { ...food };  // From ES6
+            const cloneFood2 = Object.assign({}, food); // From ES6
+            const cloneFood3 = JSON.parse(JSON.stringify(food)); // From ES5
+
+        [참조]page 62~75
+    </xmp>
+    <hr>
+    <div id="app">
+        ref 사용 예제
+        <hr>
+        <div id="component-sibilings">
+            <component-child-one v-bind:title="title1"></component-child-one>
+            <component-child-two v-bind:title="title2"></component-child-two>
+        </div>
+        <hr>
+        <div>
+            인스턴스 영역.
+            <div>
+                <textarea v-model="message" placeholder="add multiple lines">
+
+                </textarea>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

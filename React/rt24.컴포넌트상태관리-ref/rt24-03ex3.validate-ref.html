@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+
+    <link rel="stylesheet" href="../css/reset.css"/>
+
+    <style>
+        .success {
+            background-color: green;
+        }
+
+        .failure {
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <xmp>
+        버튼을 클릭하면 입력값이 0000 과 같으면 success 클래스를 적용하고
+        아니면 failure 클래스를 적용하도록 작성하시오.
+        failure 클래스 적용되는 경우에는 input 태그에 focus 를 준다.
+
+        <form> 태그 내부에 둘러싸여진 input text 박스에서 포커스가 있을 때
+        Enter 를 누르게 되면 자동으로 submit 이 된다. 이것은 form 내부에
+        input 박스가 하나만 존재해서 그렇다. 이 기능을 막고자 한다
+            (1) keycode 값을 판단해서 처리
+            (2) form 태그의 속성값으로 막기
+            (3) 크기가 없는 input 박스 하나더 추가해준다.
+    </xmp>
+    <hr>
+    <div id="app"></div>
+</body>
+
+</html>
+
+<!-- react 플러그인 include   -->
+<!-- 주의: 사이트를 배포할 때는 "development.js"를 "production.min.js"로 대체하세요. -->
+
+
+

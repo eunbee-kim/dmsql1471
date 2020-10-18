@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Title</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- CSS import -->
+    <link rel="stylesheet" href="../css/reset.css">
+</head>
+
+<body>
+    <pre>
+
+      출력에 사용한 이미지는
+      '../images/00.png' 부터  '../images/14.png' 이다
+    </pre>
+    <hr>
+    <div id="app">
+
+        <img id="img" ref="movieimage" v-bind:src="movieimageSrc" />
+        <br />
+        <input id="prev"  type="button" ref="btnPrev"  v-on:click="clickPrev"  value="&lt;&lt;" />
+        <input id="next"  type="button" ref="btnNext"  v-on:click="clickNext"  value="&gt;&gt;" />
+        <input id="start" type="button" ref="btnStart" v-on:click="clickStart" value="시작" />
+        <input id="stop"  type="button" ref="btnStop"  v-on:click="clickStop"  value="정지" />
+
+    </div>
+</body>
+
+</html>
+
+
