@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전역 컴포넌트와 지역 컴포넌트의 차이</title>
+</head>
+
+<body>
+    <div id="app">
+        <h2>첫 번째 인스턴스 영역</h2>
+        <my-global-component></my-global-component>
+        <my-local-component></my-local-component>
+
+    </div>
+
+    <script src="https://unpkg.com/vue@2.5.16/dist/vue.js"> /* vue 플러그인 임포트 */</script>
+    <script>
+
+        Vue.component('my-global-component', {
+            template: '<div>전역컴포넌트 입니다</div>'
+        })
+
+        var cmp = {
+            template: '<div>지역 컴포넌트가 등록되었습니다!</div>'
+        };
+
+        new Vue({
+            el: '#app',
+            components: {
+                'my-local-component': cmp
+            }
+        });
+    </script>
+</body>
+
+</html>
