@@ -16,8 +16,9 @@
         input {
             width: 250px;
         }
-        p > span {
-            border : 1px dashed blue;
+
+        p>span {
+            border: 1px dashed blue;
             margin: 0 10px;
             padding: 5px 10px;
         }
@@ -30,18 +31,18 @@
         Vue 인스턴스 속성중에 data, methods, watch, computed 의 특성과 차이점을 학습한다.
 
         methods 속성은?
-            수동 실행 + 이벤트처리
+        수동 실행 + 이벤트처리
 
         watch 속성은?
-            자동 실행 + 비동기처리
-            watch 속성은 data 속성 값의 변화를 감지하여 자동으로 특정 로직을 수행한다.
-            computed 속성과 유사하지만 장시간 소요되는 비동기 처리에 적합
+        자동 실행 + 비동기처리
+        watch 속성은 data 속성 값의 변화를 감지하여 자동으로 특정 로직을 수행한다.
+        computed 속성과 유사하지만 장시간 소요되는 비동기 처리에 적합
 
         computed 속성은?
-            자동 실행 + 동기처리
-            computed 속성은 기존 값을 통해 새로운 값을 도출 할때 사용한다.
-            computed 에서 정의하는 함수는 반드시 값을 반환하도록 작성되어야 한다.
-            단시간 소요되는 동기 처리에 적합
+        자동 실행 + 동기처리
+        computed 속성은 기존 값을 통해 새로운 값을 도출 할때 사용한다.
+        computed 에서 정의하는 함수는 반드시 값을 반환하도록 작성되어야 한다.
+        단시간 소요되는 동기 처리에 적합
 
         [참조] page 106, 109~111, 179
     </xmp>
@@ -58,5 +59,49 @@
 </body>
 
 </html>
-
 <!-- vue 스크립트 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js"> /* vue 플러그인 임포트 */</script>
+<script>
+    //import axios from "axios";
+
+    new Vue({
+        /* edtmc^2w data와 computed에 같은 이름이 들어가면 안댐*/
+        el: "#app",
+        data: {
+            message: "hello, Vue.js",
+            methodscopy: null,
+            watchcopy: null,
+            // computedcopy: null,
+        },
+        //template: ``,
+        methods: {
+            reverseMsg: function (event) {
+                console.log("reverseMsg");
+                var aa = this.$data.message.split(" ").reverse().join(" ");
+                Vue.set(this.$data, "message", aa);//this.$data.message = aa;
+
+                Vue.set(this.$data, "methodscopy", aa);
+            },
+        },
+        components: {},
+        computed: {
+            computedcopy: function () {
+                //this.$data.message에 현재 시간 추가해서 출력
+                const dt = new Date().toLocaleString();
+                return this.$data.message + " : " + dt;
+            },
+        },
+        watch: {
+            message: function (val) {
+                console.log("message 값이 바뀐다", val);
+                this.$data.watchcopy = val; //Vue.set(this.$data, "watchcopy",val)
+            }
+        },
+        mounted: function () {
+            console.log("mounted");
+        },
+        updated: function () {
+            console.log("updated");
+        },
+    });
+</script>

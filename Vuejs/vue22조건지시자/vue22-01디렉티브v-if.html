@@ -33,24 +33,24 @@
         [2] v-else 디렉티브 :
         [3] v-else-if 디렉티브 :
         [4] v-show 디렉티브 :
-            The use of the v-show directive is almost identical to that of v-if.
-            The only differences are that v-show does not support the <template> syntax
+        The use of the v-show directive is almost identical to that of v-if.
+        The only differences are that v-show does not support the <template> syntax
             렌더링 안됨
             display:none; <--> display:block; 를 사용.
 
-        [참조] 페이지 103, 104
+                [참조] 페이지 103, 104
 
-        https://kr.vuejs.org/v2/guide/conditional.html
+                https://kr.vuejs.org/v2/guide/conditional.html
 
-        https://riptutorial.com/vue-js/example/11981/v-if---v-else
+                https://riptutorial.com/vue-js/example/11981/v-if---v-else
 
     </xmp>
     <hr>
 
 
     <h2>
-        v-if 연습 1. 
-        #app1 인스턴스 data 프로퍼티(속성) awesome 에 어떤값을 설쟁하면 될까? 
+        v-if 연습 1.
+        #app1 인스턴스 data 프로퍼티(속성) awesome 에 어떤값을 설쟁하면 될까?
     </h2>
     <div id="app1">
         <h3 v-if="awesome">Vue is awesome!</h3>
@@ -58,7 +58,7 @@
     </div>
 
     <h2>
-		v-else 연습 2
+        v-else 연습 2
         #app2 인스턴스 data 프로퍼티(속성) awesome 에 어떤값을 설쟁하면 될까?
     </h2>
     <div id="app2">
@@ -68,7 +68,7 @@
 
     <h2>
         v-if/v-else 연습 3
-        위의 2 예제를 결합하는 예제 입니다. 
+        위의 2 예제를 결합하는 예제 입니다.
     </h2>
     <div id="app3">
         <button v-on:click="clickBind">클릭</button>
@@ -97,6 +97,131 @@
         </span>
     </div>
 </body>
+
 </html>
 
 <!-- vue 스크립트 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js"> /* vue 플러그인 임포트 */</script>
+<script>
+    //import axios from "axios";
+
+    new Vue({
+        /* edtmc^2w */
+        el: "#app1",
+        data: {
+            awesome: true,
+        },
+        //template: ``,
+        methods: {
+
+        },
+        components: {},
+        computed: {
+
+        },
+        watch: {
+
+        },
+        mounted: function () {
+            console.log("mounted");
+        },
+        updated: function () {
+            console.log("updated");
+        },
+    });
+    //import axios from "axios";
+
+    new Vue({
+        /* edtmc^2w */
+        el: "#app2",
+        data: {
+            awesome: false,//false :null, undefined,0,""
+        },
+        //template: ``,
+        methods: {
+
+        },
+        components: {},
+        computed: {
+
+        },
+        watch: {
+
+        },
+        mounted: function () {
+            console.log("mounted");
+        },
+        updated: function () {
+            console.log("updated");
+        },
+    });
+
+    //import axios from "axios";
+
+    new Vue({
+        /* edtmc^2w */
+        el: "#app3",
+        data: {
+            awesome: true,
+        },
+        //template: ``,
+        methods: {
+            clickBind: function (event) {
+                if (this.$data.awesome == true) {
+                    this.$data.awesome = false;
+                }
+                else {
+                    this.$data.awesome = true;
+                }
+            },
+        },
+        components: {},
+        computed: {
+
+        },
+        watch: {
+
+        },
+        mounted: function () {
+            console.log("mounted");
+        },
+        updated: function () {
+            console.log("updated");
+        },
+    });
+
+    //import axios from "axios";
+    //import axios from "axios";
+
+    new Vue({
+        /* edtmc^2w */
+        el: "#app5",
+        data: {
+            type: 1,
+            type: 2,
+            type: 3,
+        },
+        //template: ``,
+        methods: {
+            clickBind: function (event) {
+                var aa = (this.$data.type + 1) % 4;
+                Vue.set(this.$data, "type", aa);
+                // this.$data.type += 1;
+            }
+        },
+        components: {},
+        computed: {
+
+        },
+        watch: {
+
+        },
+        mounted: function () {
+            console.log("mounted");
+        },
+        updated: function () {
+            console.log("updated");
+        },
+    });
+
+</script>
