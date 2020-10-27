@@ -21,6 +21,7 @@
     <hr>
 
     <div id="app" class="col-md-10 offset-md-1">
+        <button v-on:click="reverseMsg">버튼</button>
         <table id="list" class="table-bordered">
             <thead>
                 <tr class="bg-warning text-white text-center">
@@ -46,4 +47,53 @@
 </html>
 
 <!-- vue 스크립트 플러그인 임포트   -->
-
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js"> /* vue 플러그인 임포트 */</script>
+<script>
+
+    //import axios from "axios";
+
+    new Vue({
+        /* edtmc^2w */
+        el: "#app",
+        data: {
+            contacts: [{
+                name: '음',
+                tel: 000001111000,
+                address: '인천'
+            },
+            {
+                name: '뭐야',
+                tel: 00000022200000,
+                address: '서울'
+            },
+            {
+                name: '야',
+                tel: 000003333000000,
+                address: '부산'
+            }]
+        },
+        //template: ``,
+        methods: {
+            reverseMsg: function (event) {
+                Vue.set(this.$data.contacts, this.$data.contacts.length, {
+                    name: '뭐야',
+                    tel: 00000022200000,
+                    address: '서울'
+                })
+            },
+        },
+        components: {},
+        computed: {
+
+        },
+        watch: {
+
+        },
+        mounted: function () {
+            console.log("mounted");
+        },
+        updated: function () {
+            console.log("updated");
+        },
+    });
+</script>

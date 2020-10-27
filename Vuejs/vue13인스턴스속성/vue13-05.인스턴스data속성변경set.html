@@ -21,41 +21,80 @@
 </head>
 
 <body>
-    <pre>
+    <xmp>
 
-    data 속성 주의 사항
-        인스턴스나 컴포넌트의 data 속성 중에 reference 타입의 값을
-        직접 바꾸면 화면에 rendering 이 되지 않음
-        즉, this.arr[0]=100; 과 같이 바꾸면 화면의 rendering 되지 않음.
-        data 속성에 있는 reference 타입은 값의 변경시 재할당이 필요하다
-        # reference 타입에는 Object, Array, Function, ...
+        data 속성의 값을 변경하려면 재할당으로 처리해야 한다. 
 
-    왜 data 속성 중에 reference 타입은 재할당 방식으로 처리해야 하는가?
-        data 속성 중에 value 타입은 대입 방식으로 처리 가능.
+        data 속성 주의 사항
+            인스턴스나 컴포넌트의 data 속성의 값을 직접 바꾸면 화면에 rendering 이 되지 않는 문제 발생
+            즉, this.arr[0]=100; 과 같이 바꾸면 화면의 rendering 되지 않음.
+
+        어떻게 data 속성의 값을 바꾸어야 하나?
+            data 속성의 값을 변경하려면 반드시 재할당으로 처리해야 한다.
+        
+        자바스크립트 타입
+            # value 타입에는 string, number, boolen, ...
+            # reference 타입에는 Object, Array, Function, ...
+        
+        new Vue({
+            el: "#",
+            data: {
+                msg1:  "aaa", /* string */
+                msg2: 123, /* number */
+                msg3: true, /* boolen */
+                msg4: [1,2,3] /* array */
+                msg5: { a:1, b: "2"}, /*I object */
+                msg6: [
+                    { a:11, b: "12"} ,
+                    { a:21, b: "22"} ,
+                    { a:31, b: "32"} ,
+                ]
+            }
+        })
 
 
-    해결방법
-        1. Vue.set(object, key, value)를 이용해서 변경한다.
-            Vue.set() 은 Vue prototype 의 static 메서드
-            Vue.set(this.arr, 0, 100);
+        reference 타입인 경우의 해결방법
+            data: {
+                msg1:  "aaa", /* string */
+                msg2: 123, /* number */
+                msg3: true, /* boolen */
+            }
+            1. Vue.set(this.$data,"msg1", "bbb");
+            2. this.$set(this.$data, "msg1", "ccc");
+            3. this.$data.msg1 = "ddd";
 
-        2. this.$set(object, key, value)를 이용해서 변경한다.
-            this.$set() 은 Vue 인스턴스 의 인스턴스 메서드
-            this.$set(this.arr, 0, 300);
+        reference 타입인 경우의 해결방법
+            data: {
+                msg4: [1,2,3] /* array */
+                msg5: { a:1, b: "2"}, /*I object */
+                msg6: [
+                    { a:11, b: "12"} ,
+                    { a:21, b: "22"} ,
+                    { a:31, b: "32"} ,
+                ]
+            }
+                
+            1. Vue.set(object, key, value) 방식 
+                Vue.set() 은 Vue prototype 의 static 메서드
+                Vue.set(this.$data.msg4, 0, 100);
 
-        3. splice()함수를 사용하여 변경한다.
-            this.arr.splice(0,1,500);
+            2. this.$set(object, key, value) 방식.
+                this.$set() 은 Vue 인스턴스 의 인스턴스 메서드
+                this.$set(this.$data.msg4, 0, 300);
 
-        4. spread 연산자 재할당 ==> 배열 사본을 만들어 수정한 뒤 재할당. ES6 에서만 가능.
-            var arr_copy=[...this.arr,70];
+            3. spread 연산자 방식 ==> 배열을 새로 만든 뒤 할당. ES6 에서만 가능.
+                var arr_copy=[...this.$data.msg4, 70];
 
-    실행 순서와 결과 예시
-        (1) [100, 2, 3, 4, 5]    <== 방법1을 적용
-        (2) [100, 300, 3, 4, 5]  <== 방법2을 적용
-        (3) [500, 3, 4, 5]       <== 방법3을 적용
-        (4) [500, 3, 4, 5, 70]   <== 방법4을 적용
+            4. splice()함수를 사용하여 변경한다.
+                this.$data.msg4.splice(0,2,500);
 
-    </pre>
+        실행 순서와 결과 예시
+            (1) [100, 2, 3, 4, 5]       <== 방법1을 적용
+            (2) [100, 300, 3, 4, 5]     <== 방법2을 적용
+            (3) [100, 300, 3, 4, 5, 70] <== 방법3을 적용
+            (4) [500, 3, 4, 5, 70]      <== 방법4을 적용
+
+    </xmp>
     <hr>
     <div id="app">
         <span v-for="(val, i) in arr" v-bind:key="i"> {{val}} </span>
@@ -69,35 +108,47 @@
 
 </html>
 
-<!-- vue 스크립트 플러그인 임포트 -->
+<!-- vue 플러그인 임포트   -->
 <script src="https://unpkg.com/vue@2.5.16/dist/vue.js"> /* vue 플러그인 임포트 */</script>
 <script>
-
+    /* edtmc^2w */
     new Vue({
         el: "#app",
         data: {
-            val: null,
-            i: null,
-            arr: [1, 2, 3, 4, 5],
+            arr: [1, 2, 3, 4, 5]
         },
         methods: {
             change1: function (event) {
-                this.$data.arr[0] = 100;
-                console.log(this.$data.arr);
-                debugger;
-                Vue.set(this.$data.arr, 0, 100);
-                debugger;
+                console.log("change1");
+                // [100, 2, 3, 4, 5]    <== 방법1을 적용
+                
+                // Vue.set( 변수명, 방번호, 바꿀값 )
+                Vue.set(this.$data.arr, 0, 100); 
             },
             change2: function (event) {
-                this.$set(this.$data.arr, 1, 300);
+                console.log("change2");
+                // [100, 300, 3, 4, 5]  <== 방법2을 적용
+                
+                // this.$set( 변수명, 방번호, 바꿀값 )
+                this.$set(this.$data.arr, 0, 100); // arr[0] = 100 의 의미
+                this.$set(this.$data.arr, 1, 300); // arr[1] = 300 의 의미 <==> Vue.set(this.$data.arr, 1, 300)
             },
             change3: function (event) {
-                this.$data.arr.splice(0, 2, 500);
+                console.log("change3");
+                // [100, 300, 3, 4, 5, 70]       <== 방법3을 적용
+
+                // ... : ES6 에서 도입된 spread 연산자. React 에서 다시 학습. 
+                var arrCopy = [...this.arr, 70]; // 500, 3, 4, 5, 70
+                this.$data.arr = arrCopy;
             },
             change4: function (event) {
-                this.$data.arr = [...this.$data.arr, 70];
+                console.log("change4");
+                //[500, 3, 4, 5, 70]      <== 방법4을 적용
+                
+                // this.arr.splice(0,2,500);
+                this.arr.splice(0, 2, 500); // 0번방, 1번방은 지우고 0번방에 500을 넣어라.
+                console.log(this.$data.arr);
             },
-        }
+        },
     });
-
 </script>

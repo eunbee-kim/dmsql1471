@@ -32,19 +32,19 @@
 
     <div id="app">
         <h3>1씩 증가하는 click 이벤트 핸들러 작성 <== 같이</h3>
-        <span>1씩 증가: {{sum1}}</span>
-        <button v-on:click="clickBtn1">1씩 증가</button>
-        <hr>
+                <span>1씩 증가: {{sum1}}</span>
+                <button v-on:click="clickBtn1">1씩 증가</button>
+                <hr>
 
-        <h3>data-num 속성에 설정된 값만큼 증가하는 이벤트 핸들러 작성 <== 각자</h3>
-        <span>10씩 증가: {{sum10}}</span>
-        <button v-on:click="clickBtn10" data-num="10">10씩 증가</button>
+                <h3>data-num 속성에 설정된 값만큼 증가하는 이벤트 핸들러 작성 <== 각자</h3>
+                        <span>10씩 증가: {{sum10}}</span>
+                        <button v-on:click="clickBtn10" data-num="10">10씩 증가</button>
 
-        <hr>
-        <h3>input 태그에 입력된 값만큼 증가하는 이벤트 핸들러 작성 <== 각자</h3>
-        <span>{{numInput}}씩 증가: {{sumInput}}</span>
-        <input type="number" name="number" v-model:value="numInput">
-        <button v-on:click="clickBtnInput">{{numInput}} 씩 증가</button>
+                        <hr>
+                        <h3>input 태그에 입력된 값만큼 증가하는 이벤트 핸들러 작성 <== 각자</h3>
+                                <span>{{numInput}}씩 증가: {{sumInput}}</span>
+                                <input type="number" name="number" v-model:value="numInput">
+                                <button v-on:click="clickBtnInput">{{numInput}} 씩 증가</button>
     </div>
 
 </body>
@@ -52,3 +52,47 @@
 </html>
 
 <!-- vue 스크립트 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js"> /* vue 플러그인 임포트 */</script>
+<script>
+    //import axios from "axios";
+
+    new Vue({
+        /* edtmc^2w */
+        el: "#app",
+        data: {
+            sum1: null,
+            sum10: null,
+            sumInput: null,
+            numInput: null,
+        },
+        //template: ``,
+        methods: {
+            clickBtn1: function (event) {
+                Vue.set(this.$data, "sum1", this.$data.sum1 + 1);
+                //this.$data.sum1+=1;
+            },
+            clickBtn10: function (event) {
+                //data-num은 dataset으로 접근 가능하다
+                console.log(event.target.dataset.num);
+                var num = event.target.dataset.num;//문자열 이므로 숫자로 바꿔야함
+                Vue.set(this.$data, "sum10", this.$data.sum10 + Number(num));
+            },
+            clickBtnInput: function (event) {
+                Vue.set(this.$data, "sumInput", this.$data.sumInput + Number(this.$data.numInput));
+            },
+        },
+        components: {},
+        computed: {
+
+        },
+        watch: {
+
+        },
+        mounted: function () {
+            console.log("mounted");
+        },
+        updated: function () {
+            console.log("updated");
+        },
+    });
+</script>

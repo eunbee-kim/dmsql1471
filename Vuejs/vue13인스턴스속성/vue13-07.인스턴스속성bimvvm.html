@@ -34,7 +34,7 @@
 
 </html>
 
-<!-- vue 스크립트 플러그인 임포트   -->
+<!-- vue 플러그인 임포트   -->
 <script src="https://unpkg.com/vue@2.5.16/dist/vue.js"> /* vue 플러그인 임포트 */</script>
 <script>
     new Vue({
@@ -44,9 +44,22 @@
         },
         methods: {
             doClick: function (event) {
-                this.$set(this.$data, "message", "change message when a button clicked!!!")
-            },
+                console.log(this);
+                //this.$set(this.$data, "message", "change message when a button clicked!!!")
+                this.$data.message = "change message when a button clicked!!!";
+            }
         },
     });
 
+    window.setTimeout(function () {
+        vm.$data.message = "change message after 3 seconds!!!";
+        vm.$data["message"] = "change message after 3 seconds!!!";
+        Vue.set(vm.$data, "meaasge", "change message after 3 seconds!!!")
+    }, 3000);
+
+    window.setTimeout(function () {
+        vm.$data.message = "change message after 5 seconds!!!";
+        vm.$data["message"] = "change message after 5 seconds!!!";
+        Vue.set(vm.$data, "meaasge", "change message after 5 seconds!!!")
+    }, 5000);
 </script>

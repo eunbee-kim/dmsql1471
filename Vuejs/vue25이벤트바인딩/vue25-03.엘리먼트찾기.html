@@ -11,6 +11,11 @@
 
     <!-- CSS import -->
     <link rel="stylesheet" href="../css/reset.css">
+    <script>
+        var btnclick = function (e) {
+            alert("btnclick");
+        }
+    </script>
 </head>
 
 <body>
@@ -34,20 +39,17 @@
     </pre>
 
     <div>
-        <input id="btn" type="button" value='엘리먼트 찾기'>
+        <input id="btn" type="button" value='엘리먼트 찾기' onclick="btnclick()">
         <hr>
 
         <input class='고전이벤트핸들러' type="button" value='엘리먼트 찾기'>
         <a class='고전이벤트핸들러' href="http://naver.com">엘리먼트 찾기</a>
         <hr>
 
-        <button name="표준이벤트핸들러" >표준 이벤트 핸들러 1</button>
-        <button name="표준이벤트핸들러" >표준 이벤트 핸들러 2</button>
-        <button name="표준이벤트핸들러" >표준 이벤트 핸들러 3</button>
+        <button name="표준이벤트핸들러">표준 이벤트 핸들러 1</button>
+        <button name="표준이벤트핸들러">표준 이벤트 핸들러 2</button>
+        <button name="표준이벤트핸들러">표준 이벤트 핸들러 3</button>
     </div>
 </body>
 
 </html>
-
-
-

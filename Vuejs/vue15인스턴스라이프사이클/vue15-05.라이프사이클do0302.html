@@ -35,11 +35,55 @@
     <div id="app">
         {{ message }}
         <!-- 버튼 기능 추가-->
-        
+        <button v-on:click="reverseMsg">누르면 이름이 나온다</button>
     </div>
 </body>
 
 </html>
 
 <!-- vue 스크립트 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js"> /* vue 플러그인 임포트 */</script>
+<script>
+    //import axios from "axios";
 
+    new Vue({
+        /* edtmc^2w */
+        el: "#app",
+        data: {
+            message: "hello Vue.js"
+        },
+        beforeCreate: function () {
+            console.log("beforeCreate");
+        },
+        created: function () {
+            console.log("created");
+        },
+        beforeMount: function () {
+            console.log("beforeMount");
+        },
+        //template: ``,
+        methods: {
+            reverseMsg: function (event) {
+                const dt = new Date().toLocaleString();
+                this.$data.message = "김은비" + dt;
+            },
+        },
+        components: {},
+        computed: {
+
+        },
+        watch: {
+
+        },
+        mounted: function () {
+            console.log("mounted");
+            this.$data.message = "change a data at mounted";
+        },
+        beforeUpdate: function () {
+            console.log("beforeUpdate");
+        },
+        updated: function () {
+            console.log("updated");
+        },
+    });
+</script>

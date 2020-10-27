@@ -13,13 +13,32 @@
     <link rel="stylesheet" href="../css/reset.css">
 
     <style>
-        #app{width:150px; height:150px; text-align:center;}
-        #app.ready{background:pink; color:brown;}
-        #app.active{background:green; color:tomato; border-radius:30%;}
-        #app.done{background:yellow; color:blue; border-radius:50%;}
+        #app {
+            width: 150px;
+            height: 150px;
+            text-align: center;
+        }
+
+        #app.ready {
+            background: pink;
+            color: brown;
+        }
+
+        #app.active {
+            background: green;
+            color: tomato;
+            border-radius: 30%;
+        }
+
+        #app.done {
+            background: yellow;
+            color: blue;
+            border-radius: 50%;
+        }
     </style>
 
 </head>
+
 <body>
     <pre>
 	  Vue.js 에서 class 속성 적용 방식.
@@ -46,7 +65,49 @@
         {{msg}}
     </div>
 </body>
+
 </html>
 
 <!-- vue 스크립트 플러그인 임포트   -->
-
+<!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js"> /* vue 플러그인 임포트 */</script>
+<script>
+    //import axios from "axios";
+
+    new Vue({
+        /* edtmc^2w */
+        el: "#app",
+        data: {
+            meg: null,
+            state: "ready",
+        },
+        //template: ``,
+        methods: {
+            change: function (event) {
+                if (this.$data.state === "ready") {
+                    this.$data.state = "active";
+                }
+                else if (this.$data.state === "active") {
+                    this.$data.state = "done";
+                }
+                else if (this.$data.state === "done") {
+                    this.$data.state = "ready";
+                }
+                this.$data.msg = this.$data.state;
+            },
+        },
+        components: {},
+        computed: {
+
+        },
+        watch: {
+
+        },
+        mounted: function () {
+            console.log("mounted");
+        },
+        updated: function () {
+            console.log("updated");
+        },
+    });
+</script>
