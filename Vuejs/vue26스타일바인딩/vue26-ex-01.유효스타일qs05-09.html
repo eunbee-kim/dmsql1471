@@ -54,3 +54,45 @@
 </html>
 
 <!-- vue 스크립트 플러그인 임포트   -->
+<!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js"> /* vue 플러그인 임포트 */</script>
+<script>
+    //import axios from "axios";
+
+    new Vue({
+        /* edtmc^2w */
+        el: "#example",
+        data: {
+            score: 0,
+        },
+        //template: ``,
+        methods: {
+
+        },
+        components: {},
+        computed: {
+            info: function () {
+                var val = Number(this.$data.score);
+                if (0 <= val && val <= 100) {
+                    return {
+                        warning: false,
+                    }
+                }
+                else {
+                    return {
+                        warning: true,
+                    }
+                }
+            },
+        },
+        watch: {
+
+        },
+        mounted: function () {
+            console.log("mounted");
+        },
+        updated: function () {
+            console.log("updated");
+        },
+    });
+</script>
