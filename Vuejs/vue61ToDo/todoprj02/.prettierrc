@@ -1,0 +1,6 @@
+                {
+                    "singleQuote": false, /* 문자열은 큰따옴표 사용 */
+                    "semi":true, /* 문장 끝에 ; 을 사용 */
+                    "useTabs":false, /* 탭 대신에 스페이스 사용 */
+                    "tabWidth":4 /* 탭을 누르면 4칸 들여쓰기 */
+                }

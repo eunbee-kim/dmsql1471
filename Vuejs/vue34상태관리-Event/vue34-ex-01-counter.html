@@ -72,8 +72,8 @@
 
   <div id="app" class="component-parent">
     Parent counter : {{ counter }} <br>
-    <button name="parent" v-on:click="addCounter(this.event, +1)">+</button>
-    <button name="parent" v-on:click="subCounter(this.event, -1)">-</button>
+    <button name="parent" v-on:click="addCounter">+</button>
+    <button name="parent" v-on:click="subCounter">-</button>
     <p></p>
 
     <!-- Child 컴포넌트를 등록하고 counter 데이터 속성을 props로 전달한다. -->
@@ -88,7 +88,7 @@
 <!-- vue 플러그인 임포트   -->
 <script src="https://unpkg.com/vue@2.5.16/dist/vue.js"> /* vue 플러그인 임포트 */</script>
 <script>
-  Vue.component("child-componet", {
+  Vue.component("component-child", {
     /* pdtmc^2w */
     props: ["num"],
     data: function () {
@@ -102,8 +102,14 @@
       </div>
       `,
     methods: {
-      addCounter: function (e) { },
-      subCounter: function (e) { }
+      addCounter: function (e) {
+        //var num;
+        // if(typeof num == "number"){}
+        this.$emit("add-counter", +10)
+      },
+      subCounter: function (e) {
+        this.$emit("sub-counter", -10)
+      }
     },
     components: {},
     computed: {
@@ -119,12 +125,28 @@
     /* edtmc^2w */
     el: "#app",
     data: {
-      counter: null,
+      counter: 0,
     },
     //template: ``,
     methods: {
-      addCounter: function (e) { },
-      subCounter: function (e) { },
+      addCounter: function (e) {
+        if (typeof e === "number") {
+          //this.$data.counter = this.$data.counter + event;
+          Vue.set(this.$data, "counter", this.$data.counter + e);
+        }
+        else {
+          this.$data.counter += 1;
+        }
+      },
+      subCounter: function (e) {
+        if (typeof e === "number") {
+          //this.$data.counter = this.$data.counter + event;
+          Vue.set(this.$data, "counter", this.$data.counter + e);
+        }
+        else {
+          this.$data.counter -= 1;
+        }
+      },
     },
     components: {},
     computed: {

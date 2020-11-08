@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <style>
-        #app > div {
+        #app>div {
             width: 300px;
             height: 250px;
             margin: 3px;
@@ -28,7 +28,7 @@
 <body>
     <div id="app">
         <h1> axios 사용할 때 </h1>
-        <div>
+        <!-- <div>
             <div>
                 <a href="#" id="menu1" v-on:click="clickMenu1">메뉴 보기 1:</a>
             </div>
@@ -47,7 +47,7 @@
             <p>
                 <span id="message2" v-html="message2"> ?? </span>
             </p>
-        </div>
+        </div> -->
         <div>
             <div>
                 <a href="#" id="menu3" v-on:click="clickMenu3">메뉴 보기 3:</a>
@@ -73,7 +73,7 @@
                 </span>
             </p>
         </div>
-        <div>
+        <!--  <div>
             <div>
                 <a href="#" id="menu4" v-on:click="clickMenu4">메뉴 보기 4:</a>
             </div>
@@ -97,10 +97,59 @@
                     </table>
                 </span>
             </p>
-        </div>
+        </div> -->
 
     </div>
 </body>
 
 </html>
-
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js"> /* vue 플러그인 임포트 */</script>
+<script src="https: //unpkg.com/vuex@3.3.0/dist/vuex.js"> /* vuex 플러그인 임포트 */</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"> /* jQuery library */</script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"> /* axios : vue 비동기 처리 플러그인 임포트 */</script>
+
+<script>
+    //import axios from "axios";
+
+    new Vue({
+        /* edtmc^2w */
+        el: "#app",
+        data: {
+            message3: [],
+
+        },
+        //template: ``,
+        methods: {
+            clickMenu3: function (e) {
+                axios({
+                    url: 'http://localhost:5050/json',      // 호출되는 서버 주소.
+                    method: "get",         // request method: get, post, delete, put
+                    params: {},            // 서버로 보내는 데이터. { data1:"test1", data2:"test2" }
+                    timeout: 30000,        // 최대 대기 시간: 30초. 30초 이상이 되면 fail 부분이 실행됨.
+                    responseType: "json",
+                })
+                    .then((res) => {
+                        console.log(res.data);
+                        //this.$data.message3 = res.data;
+                        Vue.set(this.$data, "message3", res.data);
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                    })
+            },
+        },
+        components: {},
+        computed: {
+
+        },
+        watch: {
+
+        },
+        mounted: function () {
+            console.log("mounted");
+        },
+        updated: function () {
+            console.log("updated");
+        },
+    });
+</script>

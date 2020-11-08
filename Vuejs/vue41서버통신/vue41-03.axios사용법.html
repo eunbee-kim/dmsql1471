@@ -71,3 +71,77 @@
 </html>
 
 <!-- vue 스크립트 플러그인 임포트 -->
+<!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js"> /* vue 플러그인 임포트 */</script>
+<script src="https: //unpkg.com/vuex@3.3.0/dist/vuex.js"> /* vuex 플러그인 임포트 */</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"> /* jQuery library */</script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"> /* axios : vue 비동기 처리 플러그인 임포트 */</script>
+
+<script>
+    //import axios from "axios";
+
+    new Vue({
+        /* edtmc^2w */
+        el: "#app",
+        data: {
+            message1: null,
+            message2: null,
+        },
+        //template: ``,
+        methods: {
+            clickMenu1: function (e) {
+                axios({
+                    url: 'http://localhost:5050/html',      // 호출되는 서버 주소.
+                    method: "get",         // request method: get, post, delete, put
+                    params: {},            // 서버로 보내는 데이터. { data1:"test1", data2:"test2" }
+                    timeout: 30000,        // 최대 대기 시간: 30초. 30초 이상이 되면 fail 부분이 실행됨.
+                    responseType: "html",
+                })
+                    .then((res) => {
+                        console.log(res.data);
+                        //this.$data.message1 = res.data;
+                        Vue.set(this.$data, "message1", res.data);
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                    })
+            },
+            clickMenu2: function (e) {
+                axios({
+                    url: 'http://localhost:5050/html',      // 호출되는 서버 주소.
+                    method: "get",         // request method: get, post, delete, put
+                    params: {},            // 서버로 보내는 데이터. { data1:"test1", data2:"test2" }
+                    timeout: 30000,        // 최대 대기 시간: 30초. 30초 이상이 되면 fail 부분이 실행됨.
+                    responseType: "html",
+                })
+                    .then((res) => {
+                        console.log(res.data);
+                        var $ul = $(res.data).filter('ul');
+                        //this.$data.message2 = $ul.html();
+                        Vue.set(this.$data, "message2", $ul.html());
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                    })
+            },
+            clickAlert: function (e) {
+                if (event.target.tagName.toLowerCase() === "li") { //클릭된거가 li태그면
+                    alert(event.target.innerText);
+                }
+            },
+        },
+        components: {},
+        computed: {
+
+        },
+        watch: {
+
+        },
+        mounted: function () {
+            console.log("mounted");
+        },
+        updated: function () {
+            console.log("updated");
+        },
+    });
+</script>

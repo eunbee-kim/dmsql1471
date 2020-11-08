@@ -1,6 +1,7 @@
 <!-- ex08_crud.html -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,11 +14,23 @@
     <!-- CSS import -->
     <link rel="stylesheet" href="../css/reset.css">
     <style>
-        .strong{color:red; font-weight:bold; font-size:1.2em;}
-        label { display: inline-block; width: 80px;}
-        #app > div { margin: 5px 0 ;}
+        .strong {
+            color: red;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        label {
+            display: inline-block;
+            width: 80px;
+        }
+
+        #app>div {
+            margin: 5px 0;
+        }
     </style>
 </head>
+
 <body>
     <pre>
         CRUD 방법을 학습한다.
@@ -62,7 +75,111 @@
     </div>
 
 </body>
+
 </html>
 
 <!-- vue 스크립트 플러그인 임포트   -->
-
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js"> /* vue 플러그인 임포트 */</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"> /* jQuery library */</script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"> /* axios : vue 비동기 처리 플러그인 임포트 */</script>
+<script>
+    //import axios from "axios";
+
+    new Vue({
+        /* edtmc^2w */
+        el: "#app",
+        data: {
+            user: {
+                id: null,
+                name: null,
+                power: null,
+            },
+            list: [
+                { id: 1, name: "슈퍼맨", power: 100 },
+                { id: 2, name: "아쿠아맨", power: 300 },
+                { id: 3, name: "스파이더맨", power: 500 },
+                { id: 4, name: "배트맨", power: 30 },
+            ],
+
+        },
+        //template: ``,
+        methods: {
+            insert: function (e) {
+                //정규식을 이용한 숫자판별
+                var regExp = /^[0-9]+$/;
+                if (regExp.test(this.$data.user.power)) {
+                    alert("정상추가");
+                } else {
+                    alert("놉")
+                }
+                //유효성검증
+                //power에 대한 유효성 검증 & focus 추가
+                //예를 들어 power에 숫자가 아닌 값이 들어오면
+                //alert > 빈값으로 초기화 > focus 주기
+                if (isNaN(this.$data.user.power)) {
+                    alert("숫자를입력하세요");
+                } else {
+                    //this.$data.list에서 최대 id 값 찾기 
+                    var max = this.$data.list.reduce(function (prev, next) {
+                        //prev = {id: 1, name: "슈퍼맨", power: 100}, next = {id: 2, name: "아쿠아맨", power: 300} 
+                        //최대 id 값을 리턴한다
+                        return prev.id > next.id ? prev.id : next.id;
+                    });
+                    //추가할 user 객체 만들기
+                    var user = {
+                        id: max + 1,
+                        name: this.$data.user.name,
+                        power: Number(this.$data.user.power),
+                    };
+
+                    //this.$data.list에 위엥서 만든 user객체 추가하기
+                    //방식1 push 사용하기
+                    //방식2 Vue.set 사용하기
+                    //this.$data.list.push(user);
+                    Vue.set(this.$data.list, this.$data.list.length, user);
+                }
+                //input 태그 초기화
+                //this.$data.user = null;
+                Vue.set(this.$data, "user", {});
+                this.$refs.myinput.focus();
+            },
+            //powerUP 한다
+            doUp: function (index) {
+                //this.$data.list[index].power += 100;
+                Vue.set(this.$data.list[index], "power", this.$data.list[index].power += 100);
+            },
+            doDown: function (index) {
+                this.$data.list[index].power -= 50;
+                Vue.set(this.$data.list[index], "power", this.$data.list[index].power -= 100);
+            },
+            doEdit: function (index) {
+                if (this.$data.user.id === this.$data.user.id) {
+                    this.$data.user = this.$data.list[index];
+                }
+                else {
+
+                }
+            },
+            //삭제
+            doDel: function (index) {
+                //배열에서 삭제 splice()사용
+                this.$data.list.splice(index, 1);//index는 시작(방)번호, 1은 몇개 지울건지
+            },
+
+        },
+        components: {},
+        computed: {
+
+        },
+        watch: {
+
+        },
+        mounted: function () {
+            console.log("mounted");
+            this.$refs.myinput.focus();
+        },
+        updated: function () {
+            console.log("updated");
+        },
+    });
+</script>

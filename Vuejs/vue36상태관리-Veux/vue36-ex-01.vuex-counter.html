@@ -13,19 +13,19 @@
     <link rel="stylesheet" href="../css/reset.css">
 
     <style>
+        .component-parent {
+            width: 50%;
+            background-color: lightblue;
+            padding: 5%;
+        }
 
-    .component-parent {
-        width: 50%;
-        background-color: lightblue;
-        padding:5%;
-    }
-    .component-child {
-        width: 80%;
-        background-color: lightgray;
-        padding: 5% 5% 10% 0;
-    }
+        .component-child {
+            width: 80%;
+            background-color: lightgray;
+            padding: 5% 5% 10% 0;
+        }
     </style>
-	
+
 </head>
 
 <body>
@@ -34,29 +34,130 @@
         예제 "34-ex-01-counter.html" 를 Vuex를 사용하는 방법으로 바꾸어 본다.
 
         이 앱의 특징은 다음과 같습니다.
-          + 버튼을 클릭하면 카운터가 올라가고
-          - 버튼을 클릭하면 카운터가 감소됩니다.
+        + 버튼을 클릭하면 카운터가 올라가고
+        - 버튼을 클릭하면 카운터가 감소됩니다.
 
-          child-componet 템플릿 태그는 아래와 같이 설정하시오.
-          <div class="component-child">
-              Child counter : {{ num }} <br>
-              <button name="child" v-on:click="addCounter">+</button>
-              <button name="child" v-on:click="subCounter">-</button>
-          </div>
+        child-componet 템플릿 태그는 아래와 같이 설정하시오.
+        <div class="component-child">
+            Child counter : {{ num }} <br>
+            <button name="child" v-on:click="addCounter">+</button>
+            <button name="child" v-on:click="subCounter">-</button>
+        </div>
     </xmp>
     <hr>
 
     <div id="app" class="component-parent">
         Parent counter : {{ counter }} <br>
-        <button name="parent" v-on:click="addCounter(this.event, +10)">+</button>
-        <button name="parent" v-on:click="subCounter(this.event, -10)">-</button>
+        <button name="parent" v-on:click="addCounter">+</button>
+        <button name="parent" v-on:click="subCounter">-</button>
         <p></p>
 
         <!-- Child 컴포넌트를 등록하고 counter 데이터 속성을 props로 전달한다. -->
-        <component-child></component-child>
+        <component-child v-bind:num="counter" v-on:add-counter="addCounter" v-on:sub-counter="subCounter">
+        </component-child>
     </div>
 </body>
 
 </html>
 
 <!-- vue 스크립트 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js"> /* vue 플러그인 임포트 */</script>
+<script src="https://unpkg.com/vuex@3.3.0/dist/vuex.js"> /* vuex 플러그인 임포트 */</script>
+<script>
+    var store = new Vuex.Store({
+        actions: {
+            addCounter: function (mutations, value) {
+                // this.state.counter = this.state.counter + value;
+                mutations.commit("addCounter", value)
+            },
+            subCounter: function (mutations, value) {
+                // this.state.counter = this.state.counter + value;
+                mutations.commit("subCounter", value)
+            },
+        },
+        mutations: {
+            addCounter: function (state, value) {
+                state.counter = state.counter + value;
+            },
+            subCounter: function (state, value) {
+                state.counter = state.counter - value;
+            },
+        },
+        state: {
+            counter: 0,
+        },
+        getters: {
+            //메서드로 만드는데 메서드명은 state의 이름을 그대로 사용
+            counter: function (state) {
+                return state.counter;
+            },
+        }
+
+    })
+
+    Vue.component("component-child", {
+        /* pdtmc^2w */
+        props: ["num"],
+        data: function () {
+            return {}
+        },
+        template: `
+      <div class="component-child">
+          Child counter : {{ num }} <br>
+          <button name="child" v-on:click="addCounter">+</button>
+          <button name="child" v-on:click="subCounter">-</button>
+      </div>
+      `,
+        methods: {
+            addCounter: function (e) {
+                //var num;
+                // if(typeof num == "number"){}
+                this.$emit("add-counter", +10)
+            },
+            subCounter: function (e) {
+                this.$emit("sub-counter", -10)
+            }
+        },
+        components: {},
+        computed: {
+
+        },
+        watch: {
+
+        },
+    });
+    //import axios from "axios";
+
+    new Vue({
+        /* edtmc^2w */
+        el: "#app",
+        data: {
+            //counter: 0,
+        },
+        //template: ``,
+        methods: {
+            addCounter: function (e) {
+                debugger;
+                store.dispatch("addCounter", 10)
+            },
+            subCounter: function (e) {
+                store.dispatch("subCounter", 10)
+            },
+        },
+        components: {},
+        computed: {
+            counter: function () {
+                return store.getters.counter;
+            }
+        },
+        watch: {
+
+        },
+        mounted: function () {
+            console.log("mounted");
+        },
+        updated: function () {
+            console.log("updated");
+        },
+    });
+</script>
