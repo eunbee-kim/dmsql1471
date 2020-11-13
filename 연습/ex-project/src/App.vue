@@ -2,13 +2,21 @@
   <v-app id="inspire">
     <v-navigation-drawer v-model="drawer" app>
       <v-list-item to="/"> Home</v-list-item>
-      <v-list-item v-if="isLogin === false" to="/login"> 로그인</v-list-item>
-      <v-list-item v-else to="/mypage">마이페이지</v-list-item>
+      <!-- <v-list-item v-if="isLogin === false" to="/login"> 로그인</v-list-item> 
+      <v-list-item v-else to="/mypage">마이페이지</v-list-item>-->
+      <v-list-item v-if="isLogin === true" to="/was"
+        >Web Server / WAS</v-list-item
+      >
+      <v-list-item>HTTP</v-list-item>
+      <v-list-item>TCP/IP</v-list-item>
+      <v-list-item>MVC</v-list-item>
+      <v-list-item>DB 정규화</v-list-item>
+      <v-list-item>교육 일정 보기</v-list-item>
     </v-navigation-drawer>
     <v-app-bar app>
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
 
-      <v-toolbar-title>Application</v-toolbar-title>
+      <v-toolbar-title>AD SOFT 교육과정</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-items>
         <v-menu offset-y v-if="isLogin">

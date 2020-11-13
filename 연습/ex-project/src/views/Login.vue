@@ -39,6 +39,7 @@
 
 <script>
 import { mapState, mapActions } from "vuex";
+
 export default {
   data() {
     return {
@@ -65,6 +66,35 @@ export default {
         : ((this.isSuccess = true), (this.isError = false)); */
     //그 유저의 비밀번호와 입력된 비밀번호를 비교한다
     //},
+    /*     test() {
+      axios
+        .get("https://reqres.in/api/users?page=2")
+        .then((res) => {
+          // handle success
+          console.log(res);
+        })
+        .catch((err) => {
+          // handle error
+          console.log(err);
+        })
+        .then(() => {
+          console.log("test");
+          // always executed
+        });
+    },
+    postTest() {
+      axios
+        .post("https://reqres.in/api/login", {
+          email: "eve.holt@reqres.in",
+          password: "cityslicka",
+        })
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }, */
   },
 };
 </script>
