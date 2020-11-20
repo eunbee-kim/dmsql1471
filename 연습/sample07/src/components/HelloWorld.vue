@@ -15,6 +15,7 @@
     <h3>Ecosystem</h3>
     <Module1 />
     <Module2 />
+    <router-view />
   </div>
 </template>
 
@@ -25,12 +26,12 @@ import Module2 from "./Module2";
 export default {
   name: "HelloWorld",
   props: {
-    msg: String
+    msg: String,
   },
   components: {
     Module1,
-    Module2
-  }
+    Module2,
+  },
 };
 </script>
 
