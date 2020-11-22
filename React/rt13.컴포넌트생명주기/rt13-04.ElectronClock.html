@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
 
-    <link rel="stylesheet" href="../css/reset.css"/>
+    <link rel="stylesheet" href="../css/reset.css" />
 </head>
 
 <body>
@@ -18,7 +18,7 @@
         컴포넌트명: ElectronClock
     2. JSX 에서 style 작성법을 학습한다.     
        font-size: 80pt;
-    3. 현재 시간 얻는 방법: new Date().toLocaleTimeString();
+    3. 현재 시간 얻는 방법: 
         const d = new Date();
         const h = d.getHours();
         const m = d.getMinutes();
@@ -26,11 +26,19 @@
     4. 매초 렌더링의 개념을 익한다. 
         window.setInterval(함수, 시간) 사용 
 
+
+    기능 추가 : 
+        오전인 경우 숫자앞에 0 붙이고 마지막 2개 글자 추출하기 : substr()
+        var href = "004";
+        var ext = href.substr(-2); // href.substr(href.lenght-2, 2);
+
+
     작업순서
         1. "rt07-13.ElectronClock" 예제에서 
             setInterval() 부분을 컴포넌트 안으로 옮기시오. 
             "rt13-03.TickTock" 예제 참조
-        
+
+
     <img src="../images/electronclock.png" alt="">
 
     </pre>
@@ -42,5 +50,81 @@
 </html>
 
 <!-- react 플러그인 include   -->
-<!-- 주의: 사이트를 배포할 때는 "development.js"를 "production.min.js"로 대체하세요. -->
+<!-- 주의: 사이트를 배포할 때는 'development.js'를 'production.min.js'로 대체하세요. -->
+<script
+    src='https://cdnjs.cloudflare.com/ajax/libs/react/16.12.0/umd/react.development.js'> /* import { React} from 'react'; */</script>
+<script
+    src='https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.11.0/umd/react-dom.development.js'>/* import { ReactDOM } from 'react-dom'; */</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js'>/* JSX를 자바스크립트로 변환 */</script>
+<script type='text/babel'>
+    //import React, { Component } from 'react'
+    //import ReactDOM from 'react-dom'
 
+    console.log(React)
+    console.log(ReactDOM)
+
+    class ElectronClock extends React.Component {
+        state = {
+            style1: {
+                /* font-size: 80pt; */
+                fontSize: "80pt",
+            }
+        }
+        z2(val) {
+            /* 오전인 경우 숫자앞에 0 붙이기 */
+            const str = "00" + val;
+
+            // 004  --> 04
+            // 0016 --> 16
+            // 001  --> 01
+            // 0011 --> 11
+            return str.substr(str.length - 2, 2);
+        }
+
+        componentDidMount(){
+            this.timer = window.setInterval(
+        function () {
+            ReactDOM.render(
+                <ElectronClock></ElectronClock>, document.getElementById("app")
+            )
+
+            const d = new Date();
+            let h = d.getHours();
+            let m = d.getMinutes();
+            let s = d.getSeconds();
+
+            h = this.z2(h); // 2자리 만들기 
+            m = this.z2(m); // 2자리 만들기
+            s = this.z2(s); // 2자리 만들기
+
+            this.setState({
+                hms: h+":"+m+":"+s
+            })
+        },
+        1000
+    )
+        }
+
+        render() {
+            const d = new Date();
+            let h = d.getHours();
+            let m = d.getMinutes();
+            let s = d.getSeconds();
+
+            h = this.z2(h); // 2자리 만들기 
+            m = this.z2(m); // 2자리 만들기
+            s = this.z2(s); // 2자리 만들기
+
+            return (
+                <div style={this.state.style1}>
+                    {h}:{m}:{s}
+                </div>
+            )
+        }
+    }
+    ReactDOM.render(
+                <ElectronClock></ElectronClock>, document.getElementById("app")
+            )
+
+
+</script>

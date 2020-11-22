@@ -19,4 +19,26 @@
 </body>
 </html>
 
-
+<script src='https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js'>/* JSX를 자바스크립트로 변환 */</script>
+<script type="text/babel">
+    var product = { name: '도서', price: '4200원' };
+    var message = `
+        제품 ${product.name}의 가격은 ${product.price}입니다
+    `;
+    console.log(message);
+
+    var student = {
+        name: 'John Kagga',
+        city: 'Kampala'
+    };
+
+    // ES5
+    var message = 'Hello ' + student.name + ' from ' + student.city;
+    console.log(message); // Hello John Kagga from Kampala
+
+    // ES6
+    let message = `Hello ${student.name} from ${student.city}`;
+    console.log(message); // Hello John Kagga from Kampala
+
+</script>
+

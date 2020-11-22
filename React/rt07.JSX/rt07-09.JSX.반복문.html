@@ -42,5 +42,89 @@
 </html>
 
 <!-- react 플러그인 include   -->
-<!-- 주의: 사이트를 배포할 때는 "development.js"를 "production.min.js"로 대체하세요. -->
+<!-- 주의: 사이트를 배포할 때는 'development.js'를 'production.min.js'로 대체하세요. -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/react/16.12.0/umd/react.development.js'> /* import { React} from 'react'; */</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.11.0/umd/react-dom.development.js'>/* import { ReactDOM } from 'react-dom'; */</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js'>/* JSX를 자바스크립트로 변환 */</script>
+<script type='text/babel'>
+    //import React, { Component } from 'react'
+    //import ReactDOM from 'react-dom'
+    
+    console.log(React)
+    console.log(ReactDOM)
+    
+    const elements = ['One', 'Two', 'Three'];
+    
+    class Loop1 extends React.Component {
+        render() {
+            const items = this.props.items;
+            /*
+            <li key=0>One</li>
+            <li key=1>Two</li>
+            <li key=2>Three</li>
+            */
+            let arrs= [];
+            for( let index in items){             
+                arrs.push( <li key={index}>{ items[index] }</li> )
+            }
 
+            return (
+                <div>
+                    { arrs }
+                </div>
+            )
+        }
+    }
+    ReactDOM.render(
+        <Loop1 items={ elements }></Loop1>, document.getElementById("wrap1")
+    )
+
+    class Loop2 extends React.Component {
+        render() {
+            const items = this.props.items;
+            /*
+            <li key=0>One</li>
+            <li key=1>Two</li>
+            <li key=2>Three</li>
+            */
+            let arrs = [];
+            // items.entries() 는 [index,value] 값을 리턴한다. 
+            for (let [index,value] of items.entries() ) {
+                arrs.push(<li key={index}>{value}</li>)
+            }
+
+            return (
+                <div>
+                    { arrs}
+                </div>
+            )
+        }
+    }
+    ReactDOM.render(
+        <Loop2 items={elements}></Loop2>, document.getElementById("wrap2")
+    )
+
+    class Loop3 extends React.Component {
+        render() {
+            const items = this.props.items;
+            /*
+            <li key=0>One</li>
+            <li key=1>Two</li>
+            <li key=2>Three</li>
+            */
+
+            const arrs = items.map( function(value, index){
+                return ( <li key={index}>{value}</li>)
+            })
+            console.log(arrs);
+            return (
+                <div>
+                    {arrs}
+                </div>
+            )
+        }
+    }
+    ReactDOM.render(
+        <Loop3 items={elements}></Loop3>, document.getElementById("wrap3")
+    )
+</script>
