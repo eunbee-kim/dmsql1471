@@ -1,0 +1,6 @@
+C:\Users\kimeunbee\source\repos\DotNotNote.Database\DotNotNote.Database\bin\Debug\DotNotNote.Database.dacpac
+C:\Users\kimeunbee\source\repos\DotNotNote.Database\DotNotNote.Database\bin\Debug\DotNotNote.Database.dll
+C:\Users\kimeunbee\source\repos\DotNotNote.Database\DotNotNote.Database\bin\Debug\DotNotNote.Database.pdb
+C:\Users\kimeunbee\source\repos\DotNotNote.Database\DotNotNote.Database\obj\Debug\DotNotNote.Database.dll
+C:\Users\kimeunbee\source\repos\DotNotNote.Database\DotNotNote.Database\obj\Debug\DotNotNote.Database.pdb
+C:\Users\kimeunbee\source\repos\DotNotNote.Database\DotNotNote.Database\obj\Debug\DotNotNote.Database.sqlprojAssemblyReference.cache
