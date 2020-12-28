@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30611.23
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1202_Vue JS Template AspNet Core 3.1 Web API1", "1202_Vue JS Template AspNet Core 3.1 Web API1\1202_Vue JS Template AspNet Core 3.1 Web API1.csproj", "{405A33A7-E427-4841-8710-0311C896354F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{405A33A7-E427-4841-8710-0311C896354F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{405A33A7-E427-4841-8710-0311C896354F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{405A33A7-E427-4841-8710-0311C896354F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{405A33A7-E427-4841-8710-0311C896354F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EADFBDD3-5048-4541-B60F-9B7D7837BA92}
+	EndGlobalSection
+EndGlobal
