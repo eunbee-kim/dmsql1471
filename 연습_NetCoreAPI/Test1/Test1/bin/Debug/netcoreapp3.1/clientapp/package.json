@@ -14,7 +14,7 @@
     "core-js": "^3.6.5",
     "devextreme": "20.2.3",
     "devextreme-aspnet-data-nojquery": "^2.7.2",
-    "devextreme-vue": "20.2.3",
+    "devextreme-vue": "20.2.4",
     "node-sass": "^4.11.0",
     "vue": "^2.6.11",
     "vue-router": "^3.0.1",

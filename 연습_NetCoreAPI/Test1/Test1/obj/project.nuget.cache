@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "eERdYWnYzXanGvgeZVKcz4OMEQ2w4ntoYqVcGUkvn4TFjEjSeSxVk54X6V8FJ1/zrvA0ClcnzCkMjmKqfLRZfg==",
+  "dgSpecHash": "7wKW53BrJe8grhbDhDi9m8zl/GzAw0w9c22CEivb2zyrGDCEuEmANyOhAycpTdwbBB9xKSjthzwavDg6gRjP0g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\kimeunbee\\source\\repos\\test1\\Test1\\Test1.csproj",
+  "projectFilePath": "C:\\dmsql1471\\연습_NetCoreAPI\\Test1\\Test1\\Test1.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\kimeunbee\\.nuget\\packages\\microsoft.aspnetcore.nodeservices\\3.1.0\\microsoft.aspnetcore.nodeservices.3.1.0.nupkg.sha512",
     "C:\\Users\\kimeunbee\\.nuget\\packages\\microsoft.aspnetcore.spaservices\\3.1.0\\microsoft.aspnetcore.spaservices.3.1.0.nupkg.sha512",

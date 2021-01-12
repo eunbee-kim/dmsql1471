@@ -5,28 +5,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
 </head>
 
 <body>
-    지금은 수업중
+
 </body>
 
 </html>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
-    var Dog = {
-        name: 'Fido',
-        weigh: 40,
-        breed: 'Mixed',
-        loves: ['walks', 'fetching balls']
-    };
 
-    var p = {
-        id: "a1",
-        class: "b1",
-        style: "",
-        src: "",
-        href: ""
-    };
+    function getData(callback) {
+        return new Promise((resolve, reject) => {
+            $.get('https://js.devexpress.com/Demos/DevAV/odata/Tasks', (response) => {
+                resolve(response);
+            });
+        })
+    }
+
+    getData().then((tableData) => {
+        console.log(tableData);
+    })
 
 </script>

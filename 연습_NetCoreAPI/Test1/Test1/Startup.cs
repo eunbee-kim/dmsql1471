@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -42,11 +43,15 @@ namespace Test1
             {
                 app.UseDeveloperExceptionPage();
             }
+            else
+            {
+                app.UseHsts();
+            }
 
             app.UseRouting();
             app.UseSpaStaticFiles();
             app.UseAuthorization();
-
+            app.UseStaticFiles();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
@@ -64,6 +69,9 @@ namespace Test1
                     spa.UseVueCli(npmScript: "serve");
                 }
 
+            });
+            app.Run(async (context) => {
+                await context.Response.WriteAsync("Could Not Find Anything");
             });
         }
     }
